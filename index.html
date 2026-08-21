@@ -1,0 +1,295 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nora Digital Studio</title>
+
+  <meta name="description"
+        content="Digital learning resources, Python courses, computing lessons, exercises and educational tools.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f8fc;
+      color: #202124;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #6d45e8;
+      color: white;
+      padding: 56px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 38px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    nav {
+      background: white;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    }
+
+    nav a {
+      color: #5b35cf;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
+    }
+
+    h2 {
+      color: #5b35cf;
+      margin-top: 0;
+    }
+
+    .items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .item {
+      border: 1px solid #e5e5ee;
+      border-radius: 12px;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .product {
+      border: 1px solid #e5e5ee;
+      border-radius: 15px;
+      padding: 24px;
+      margin-top: 20px;
+      background: #faf9ff;
+    }
+
+    .product h3 {
+      color: #5b35cf;
+      font-size: 22px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #6d45e8;
+      margin: 15px 0;
+    }
+
+    .buy-btn {
+      display: inline-block;
+      background: #6d45e8;
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .coming {
+      background: #e9e5f8;
+      color: #5b35cf;
+      cursor: default;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 32px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="home">
+    <h1>Nora Digital Studio</h1>
+    <p>Digital learning resources & computing tools</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Digital Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+
+    <!-- ABOUT -->
+    <section class="card" id="about">
+      <h2>About Nora Digital Studio</h2>
+
+      <p>
+        Nora Digital Studio creates practical digital resources
+        for students, teachers and beginners in computing.
+      </p>
+    </section>
+
+
+    <!-- WHAT WE CREATE -->
+    <section class="card">
+
+      <h2>What We Create</h2>
+
+      <div class="items">
+
+        <div class="item">
+          <h3>💻 Computing Lessons</h3>
+          <p>
+            Clear and practical digital lessons
+            for students and beginners.
+          </p>
+        </div>
+
+        <div class="item">
+          <h3>🐍 Python Exercises</h3>
+          <p>
+            Beginner-friendly Python exercises
+            with practical examples.
+          </p>
+        </div>
+
+        <div class="item">
+          <h3>📊 Excel Templates</h3>
+          <p>
+            Practical spreadsheets and
+            ready-to-use templates.
+          </p>
+        </div>
+
+        <div class="item">
+          <h3>🛠️ Educational Tools</h3>
+          <p>
+            Simple digital tools and programs
+            for education.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DIGITAL PRODUCTS -->
+    <section class="card" id="products">
+
+      <h2>Digital Products</h2>
+
+      <p>
+        Explore our digital courses, educational resources
+        and useful computing tools.
+      </p>
+
+
+      <!-- PYTHON COURSE -->
+      <div class="product">
+
+        <h3>🐍 Python for Beginners</h3>
+
+        <p>
+          Learn the fundamentals of Python step by step,
+          with simple explanations, examples and exercises.
+        </p>
+
+        <p>
+          This course is currently being prepared.
+          It will be available soon.
+        </p>
+
+        <div class="price">
+          Coming Soon
+        </div>
+
+        <a href="#" class="buy-btn coming">
+          Coming Soon
+        </a>
+
+      </div>
+
+
+      <!-- FUTURE PRODUCT -->
+      <div class="product">
+
+        <h3>💻 Educational Digital Tools</h3>
+
+        <p>
+          Useful digital tools and resources
+          for teachers and students.
+        </p>
+
+        <div class="price">
+          Coming Soon
+        </div>
+
+        <a href="#" class="buy-btn coming">
+          Coming Soon
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="card" id="contact">
+
+      <h2>Contact</h2>
+
+      <p>
+        For questions about our digital products,
+        please contact Nora Digital Studio.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 Nora Digital Studio. All rights reserved.
+  </footer>
+
+</body>
+</html>
