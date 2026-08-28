@@ -86,7 +86,7 @@ const teacher_id = session.user.id;
 
 const student = {
     teacher_id: teacher_id,
-  status:"accepted",
+    status:"accepted",
     first_name: document.getElementById("firstName").value,
     last_name: document.getElementById("lastName").value,
     birth_date: document.getElementById("birthDate").value || null,
@@ -321,7 +321,19 @@ const exportExcel = document.getElementById("exportExcel");
 
 exportExcel.addEventListener("click", function () {
 
-    const table = document.querySelector("table");
+    const table = document.querySelector("#studentsTable").closest("table");
+
+    if (!table) {
+        alert("❌ لم يتم العثور على جدول التلاميذ");
+        return;
+    }
+
+    const rows = table.querySelectorAll("tbody tr");
+
+    if (rows.length === 0) {
+        alert("⚠️ لا يوجد تلاميذ لتصديرهم");
+        return;
+    }
 
     const workbook = XLSX.utils.table_to_book(table, {
         sheet: "التلاميذ"
