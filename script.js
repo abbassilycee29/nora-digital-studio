@@ -316,7 +316,7 @@ if (logoutBtn) {
 }
 
 
-// تصدير Excel
+// تصدير excel
 const exportExcel = document.getElementById("exportExcel");
 
 exportExcel.addEventListener("click", function () {
@@ -339,8 +339,28 @@ exportExcel.addEventListener("click", function () {
         sheet: "التلاميذ"
     });
 
-    XLSX.writeFile(workbook, "التلاميذ.xlsx");
+    const worksheet = workbook.Sheets["التلاميذ"];
 
+    // ضبط عرض الأعمدة
+    worksheet["!cols"] = [
+        { wch: 7 },   // الرقم
+        { wch: 18 },  // الاسم
+        { wch: 18 },  // اللقب
+        { wch: 15 },  // تاريخ الميلاد
+        { wch: 18 },  // مكان الميلاد
+        { wch: 10 },  // الجنس
+        { wch: 25 },  // السنة الدراسية
+        { wch: 28 },  // الشعبة
+        { wch: 12 },  // القسم
+        { wch: 22 },  // اسم الولي
+        { wch: 18 },  // هاتف الولي
+        { wch: 30 },  // العنوان
+        { wch: 35 },  // البريد الإلكتروني
+        { wch: 35 },  // ملاحظات
+        { wch: 15 }   // إجراءات
+    ];
+
+    XLSX.writeFile(workbook, "التلاميذ.xlsx");
 });
 // البحث والفلترة
 const searchStudent = document.getElementById("searchStudent");
