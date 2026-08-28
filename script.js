@@ -321,108 +321,100 @@ const exportExcel = document.getElementById("exportExcel");
 
 exportExcel.addEventListener("click", function () {
 
-    const table = document.querySelector("#studentsTable").closest("table");
+    const tableBody = document.getElementById("studentsTable");
 
-    if (!table) {
+    if (!tableBody) {
         alert("❌ لم يتم العثور على جدول التلاميذ");
         return;
     }
 
-    const rows = table.querySelectorAll("tbody tr");
+    const rows = tableBody.querySelectorAll("tr");
 
     if (rows.length === 0) {
         alert("⚠️ لا يوجد تلاميذ لتصديرهم");
         return;
     }
 
-    const workbook = XLSX.utils.table_to_book(table, {
-        sheet: "التلاميذ"
-    });
+    const excelData = [];
 
-    const worksheet = workbook.Sheets["التلاميذ"];
+    // العناوين
+    excelData.push([
+        "الرقم",
+        "الاسم",
+        "اللقب",
+        "تاريخ الميلاد",
+        "مكان الميلاد",
+        "الجنس",
+        "السنة الدراسية",
+        "الشعبة",
+        "القسم",
+        "اسم الولي",
+        "هاتف ولي الأمر",
+        "العنوان",
+        "البريد الإلكتروني",
+        "ملاحظات"
+    ]);
 
-    // ضبط عرض الأعمدة
-    worksheet["!cols"] = [
-        { wch: 7 },   // الرقم
-        { wch: 18 },  // الاسم
-        { wch: 18 },  // اللقب
-        { wch: 15 },  // تاريخ الميلاد
-        { wch: 18 },  // مكان الميلاد
-        { wch: 10 },  // الجنس
-        { wch: 25 },  // السنة الدراسية
-        { wch: 28 },  // الشعبة
-        { wch: 12 },  // القسم
-        { wch: 22 },  // اسم الولي
-        { wch: 18 },  // هاتف الولي
-        { wch: 30 },  // العنوان
-        { wch: 35 },  // البريد الإلكتروني
-        { wch: 35 },  // ملاحظات
-        { wch: 15 }   // إجراءات
-    ];
-
-    XLSX.writeFile(workbook, "التلاميذ.xlsx");
-});
-// البحث والفلترة
-const searchStudent = document.getElementById("searchStudent");
-const filterClass = document.getElementById("filterClass");
-const filterYear = document.getElementById("filterYear");
-const filterBranch = document.getElementById("filterBranch");
-
-function applyFilters() {
-
-    const search = searchStudent.value.trim().toLowerCase();
-    const selectedYear = filterYear.value;
-    const selectedBranch = filterBranch.value;
-    const selectedClass = filterClass.value;
-
-    const rows = document.querySelectorAll("#studentsTable tr");
-
+    // بيانات التلاميذ
     rows.forEach(function(row) {
 
-        const lastName =
-            row.cells[1]?.textContent.toLowerCase() || "";
+        const cells = row.querySelectorAll("td");
 
-        const firstName =
-            row.cells[2]?.textContent.toLowerCase() || "";
+        excelData.push([
+            cells[0]?.textContent.trim() || "",
+            cells[1]?.textContent.trim() || "",
+            cells[2]?.textContent.trim() || "",
 
-        const year =
-            row.cells[6]?.textContent.trim() || "";
+            // تاريخ الميلاد كنص
+            cells[3]?.textContent.trim() || "",
 
-        const branch =
-            row.cells[7]?.textContent.trim() || "";
-
-        const className =
-            row.cells[8]?.textContent.trim() || "";
-
-        const matchSearch =
-            lastName.includes(search) ||
-            firstName.includes(search);
-
-        const matchYear =
-            selectedYear === "" ||
-            year === selectedYear;
-
-        const matchBranch =
-            selectedBranch === "" ||
-            branch === selectedBranch;
-
-        const matchClass =
-            selectedClass === "" ||
-            className === selectedClass;
-
-        if (
-            matchSearch &&
-            matchYear &&
-            matchBranch &&
-            matchClass
-        ) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
-
+            cells[4]?.textContent.trim() || "",
+            cells[5]?.textContent.trim() || "",
+            cells[6]?.textContent.trim() || "",
+            cells[7]?.textContent.trim() || "",
+            cells[8]?.textContent.trim() || "",
+            cells[9]?.textContent.trim() || "",
+            cells[10]?.textContent.trim() || "",
+            cells[11]?.textContent.trim() || "",
+            cells[12]?.textContent.trim() || "",
+            cells[13]?.textContent.trim() || ""
+        ]);
     });
-}
+
+    const worksheet = XLSX.utils.aoa_to_sheet(excelData);
+
+    // عرض الأعمدة
+    worksheet["!cols"] = [
+        { wch: 7 },
+        { wch: 18 },
+        { wch: 18 },
+        { wch: 18 },
+        { wch: 20 },
+        { wch: 10 },
+        { wch: 28 },
+        { wch: 30 },
+        { wch: 12 },
+        { wch: 22 },
+        { wch: 20 },
+        { wch: 35 },
+        { wch: 40 },
+        { wch: 40 }
+    ];
+
+    const workbook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        "التلاميذ"
+    );
+
+    XLSX.writeFile(
+        workbook,
+        "التلاميذ.xlsx"
+    );
+
+});
 
 
 // البحث بالاسم واللقب
