@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>دخول الأستاذ</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+
+        <section class="form-box">
+
+            <h2>🔐 دخول الأستاذ</h2>
+
+            <p>أدخل البريد الإلكتروني وكلمة المرور</p>
+
+            <form id="loginForm">
+
+                <div class="input-group">
+
+                    <label>البريد الإلكتروني</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        required
+                    >
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>كلمة المرور</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        required
+                    >
+
+                </div>
+
+                <button type="submit">
+                    🔑 دخول
+                </button>
+
+                <p id="message"></p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="login.js"></script>
+
+</body>
+
+</html>

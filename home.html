@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>منصة الأستاذة عباسي أم الجيلالي</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eaf4ff, #ffffff);
+        }
+
+        header {
+            text-align: center;
+            padding: 35px 20px 20px;
+        }
+
+        .logo {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .site-title h1 {
+            color: #1769aa;
+            margin: 5px 0;
+            font-size: 30px;
+        }
+
+        .site-title p {
+            color: #555;
+            margin: 8px;
+            font-size: 17px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .welcome-box {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+        }
+
+        .welcome-box h2 {
+            color: #1769aa;
+            margin-top: 0;
+            font-size: 26px;
+        }
+
+        .welcome-text {
+            color: #666;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .choices {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .choice {
+            width: 230px;
+            padding: 25px 15px;
+            border-radius: 16px;
+            background: #f5f9ff;
+            border: 1px solid #dcecff;
+        }
+
+        .choice-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .choice h3 {
+            margin: 10px 0;
+            color: #1769aa;
+        }
+
+        .choice p {
+            color: #666;
+            font-size: 14px;
+            min-height: 40px;
+        }
+
+        .choice button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #1769aa;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .choice button:hover {
+            background: #0d4f80;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #666;
+        }
+
+        footer strong {
+            color: #1769aa;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            🎓
+        </div>
+
+        <div class="site-title">
+
+            <h1>
+                منصة الأستاذة عباسي أم الجيلالي
+            </h1>
+
+            <p>
+                مادة الإعلام الآلي - المستوى الثانوي
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="welcome-box">
+
+            <h2>
+                مرحبًا بكم في المنصة 👋
+            </h2>
+
+            <p class="welcome-text">
+                اختر طريقة الدخول المناسبة للمتابعة
+            </p>
+
+
+            <div class="choices">
+
+
+                <div class="choice">
+
+                    <div class="choice-icon">
+                        👨‍🎓
+                    </div>
+
+                    <h3>
+                        التلميذ
+                    </h3>
+
+                    <p>
+                        تسجيل معلوماتك الشخصية في المنصة
+                    </p>
+
+                    <button
+                        type="button"
+                        onclick="window.location.href='student.html'">
+
+                        تسجيل التلميذ
+
+                    </button>
+
+                </div>
+
+
+                <div class="choice">
+
+                    <div class="choice-icon">
+                        👩‍🏫
+                    </div>
+
+                    <h3>
+                     الأستاذ
+                    </h3>
+
+                    <p>
+                        الدخول إلى فضاء الأستاذ وإدارة بيانات التلاميذ
+                    </p>
+
+                    <button
+                        type="button"
+                        onclick="window.location.href='login.html'">
+
+                   دخول الأستاذ
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            منصة الأستاذة © 2026
+        </p>
+
+        <p>
+            إعداد وتطوير:
+            <strong>
+                الأستاذة عباسي أم الجيلالي
+            </strong>
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>تسجيل التلميذ</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            🎓
+        </div>
+
+        <div class="site-title">
+
+            <h1>منصة الأستاذ</h1>
+
+            <p>تسجيل معلومات التلميذ</p>
+
+            <p>مادة الإعلام الآلي - المستوى الثانوي</p>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <section class="form-box">
+
+            <h2>📝 تسجيل معلومات التلميذ</h2>
+
+            <p class="description">
+                يرجى إدخال المعلومات الشخصية بدقة.
+            </p>
+
+
+            <form id="studentForm">
+
+
+                <div class="form-row">
+
+                    <div class="input-group">
+
+                        <label for="firstName">
+                            اللقب *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="firstName"
+                            placeholder="أدخل اللقب"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="lastName">
+                            الاسم *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            placeholder="أدخل الاسم"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="input-group">
+
+                        <label for="birthDate">
+                            تاريخ الميلاد *
+                        </label>
+
+                        <input
+                            type="date"
+                            id="birthDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="birthPlace">
+                            مكان الميلاد
+                        </label>
+
+                        <input
+                            type="text"
+                            id="birthPlace"
+                            placeholder="أدخل مكان الميلاد"
+                        >
+
+                    </div>
+
+                </div>
+<div class="form-row">
+
+    <div class="input-group">
+
+        <label for="gender">
+            الجنس *
+        </label>
+
+        <select id="gender" required>
+
+            <option value="">
+                اختر
+            </option>
+
+            <option value="ذكر">
+                ذكر
+            </option>
+
+            <option value="أنثى">
+                أنثى
+            </option>
+
+        </select>
+
+    </div>
+</div>
+<br>
+    <div class="input-group">
+
+        <label for="schoolYear">
+            السنة الدراسية *
+        </label>
+
+        <select id="schoolYear" required>
+
+            <option value="">
+                اختر السنة
+            </option>
+
+            <option value="1AS">
+                الأولى ثانوي
+            </option>
+
+            <option value="2AS">
+                الثانية ثانوي
+            </option>
+
+            <option value="3AS">
+                الثالثة ثانوي
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+<div class="form-row">
+
+    <div class="input-group">
+
+        <label for="branch">
+            الشعبة *
+        </label>
+
+        <select id="branch" required>
+
+            <option value="">
+                اختر الشعبة
+            </option>
+
+            <option value="جذع مشترك علوم وتكنولوجيا">
+                جذع مشترك علوم وتكنولوجيا
+            </option>
+
+            <option value="جذع مشترك آداب">
+                جذع مشترك آداب
+            </option>
+
+            <option value="علوم تجريبية">
+                علوم تجريبية
+            </option>
+
+            <option value="رياضيات">
+                رياضيات
+            </option>
+
+            <option value="تقني رياضي">
+                تقني رياضي
+            </option>
+
+            <option value="تسيير واقتصاد">
+                تسيير واقتصاد
+            </option>
+
+            <option value="لغات أجنبية">
+                لغات أجنبية
+            </option>
+
+            <option value="آداب وفلسفة">
+                آداب وفلسفة
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="input-group">
+
+        <label for="className">
+            القسم *
+        </label>
+
+        <select id="className" required>
+
+            <option value="">
+                اختر القسم
+            </option>
+
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7>7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+
+        </select>
+
+    </div>
+
+</div>
+
+
+                <div class="form-row">
+
+                    <div class="input-group">
+
+                        <label for="parentName">
+                            اسم ولي الأمر *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="parentName"
+                            placeholder="اسم ولي الأمر"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="parentPhone">
+                            هاتف ولي الأمر *
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="parentPhone"
+                            placeholder="07XXXXXXXX"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group full">
+
+                    <label for="address">
+                        العنوان
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        placeholder="أدخل العنوان"
+                    >
+
+                </div>
+
+
+                <div class="input-group full">
+
+                    <label for="email">
+                        البريد الإلكتروني
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@email.com"
+                    >
+
+                </div>
+
+
+                <div class="input-group full">
+
+                    <label for="notes">
+                        ملاحظات
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        placeholder="ملاحظات إضافية"
+                    ></textarea>
+
+                </div>
+
+
+                <button type="submit">
+                    📤 إرسال المعلومات
+                </button>
+
+
+            </form>
+
+
+            <p class="privacy">
+                🔒 معلومات التلميذ سرية وتظهر للأستاذ فقط.
+            </p>
+
+        </section>
+
+    </main>
+<button type="button" onclick="window.location.href='home.html'">
+    🏠 الصفحة الرئيسية
+</button>
+
+    <footer>
+        منصة الأستاذ © 2026
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+
+        const SUPABASE_URL =
+            "https://hoczkycnopirodzxseyz.supabase.co";
+
+        const SUPABASE_KEY =
+            "sb_publishable_bKO1SVJnyxI5dN2AdTj7CA_1OhRl4SF";
+
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        const form =
+            document.getElementById("studentForm");
+
+
+        form.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            const student = {
+
+    first_name:
+        document.getElementById("firstName").value,
+
+    last_name:
+        document.getElementById("lastName").value,
+
+    birth_date:
+        document.getElementById("birthDate").value || null,
+
+    birth_place:
+        document.getElementById("birthPlace").value,
+
+    gender:
+        document.getElementById("gender").value,
+
+    school_year:
+        document.getElementById("schoolYear").value,
+
+    branch:
+        document.getElementById("branch").value,
+
+    class_name:
+        document.getElementById("className").value,
+
+    parent_name:
+        document.getElementById("parentName").value,
+
+    parent_phone:
+        document.getElementById("parentPhone").value,
+
+    address:
+        document.getElementById("address").value,
+
+    email:
+        document.getElementById("email").value,
+   notes:
+    document.getElementById("notes").value,
+
+teacher_id:
+    new URLSearchParams(window.location.search).get("teacher"),
+
+status: "pending"
+};
+            const { error } =
+                await supabaseClient
+                    .from("teacher student")
+                    .insert([student]);
+
+
+            if (error) {
+
+                console.error(error);
+
+                alert("حدث خطأ: " + error.message);
+
+                return;
+            }
+
+
+            alert("تم تسجيل معلوماتك بنجاح ✅");
+
+            form.reset();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
