@@ -337,7 +337,6 @@ exportExcel.addEventListener("click", function () {
 
     const excelData = [];
 
-    // العناوين
     excelData.push([
         "الرقم",
         "الاسم",
@@ -355,7 +354,6 @@ exportExcel.addEventListener("click", function () {
         "ملاحظات"
     ]);
 
-    // بيانات التلاميذ
     rows.forEach(function(row) {
 
         const cells = row.querySelectorAll("td");
@@ -364,10 +362,7 @@ exportExcel.addEventListener("click", function () {
             cells[0]?.textContent.trim() || "",
             cells[1]?.textContent.trim() || "",
             cells[2]?.textContent.trim() || "",
-
-            // تاريخ الميلاد كنص
             cells[3]?.textContent.trim() || "",
-
             cells[4]?.textContent.trim() || "",
             cells[5]?.textContent.trim() || "",
             cells[6]?.textContent.trim() || "",
@@ -385,21 +380,44 @@ exportExcel.addEventListener("click", function () {
 
     // عرض الأعمدة
     worksheet["!cols"] = [
-        { wch: 7 },
-        { wch: 18 },
-        { wch: 18 },
-        { wch: 18 },
+        { wch: 8 },
         { wch: 20 },
-        { wch: 10 },
-        { wch: 28 },
+        { wch: 20 },
+        { wch: 18 },
+        { wch: 22 },
+        { wch: 12 },
+        { wch: 30 },
         { wch: 30 },
         { wch: 12 },
-        { wch: 22 },
+        { wch: 25 },
         { wch: 20 },
         { wch: 35 },
         { wch: 40 },
         { wch: 40 }
     ];
+
+    // جعل جميع الخلايا نصوصًا ومحاذاتها إلى اليمين
+    const range = XLSX.utils.decode_range(worksheet["!ref"]);
+
+    for (let R = range.s.r; R <= range.e.r; R++) {
+
+        for (let C = range.s.c; C <= range.e.c; C++) {
+
+            const address = XLSX.utils.encode_cell({
+                r: R,
+                c: C
+            });
+
+            if (worksheet[address]) {
+
+                worksheet[address].t = "s";
+
+                worksheet[address].v =
+                    String(worksheet[address].v);
+
+            }
+        }
+    }
 
     const workbook = XLSX.utils.book_new();
 
