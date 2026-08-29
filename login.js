@@ -32,7 +32,7 @@ loginForm.addEventListener("submit", async function(event) {
         message.textContent = "✅ تم تسجيل الدخول";
         message.style.color = "green";
 
-        window.location.href = "index.html";
+        window.location.href = "teacher.html";
     }
 
 });
