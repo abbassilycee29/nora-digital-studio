@@ -319,7 +319,7 @@ if (logoutBtn) {
 // تصدير excel
  const exportExcel = document.getElementById("exportExcel");
 
-exportExcel.addEventListener("click", function () {
+exportExcel.addEventListener("click", async function () {
 
     const tableBody = document.getElementById("studentsTable");
 
@@ -335,10 +335,19 @@ exportExcel.addEventListener("click", function () {
         return;
     }
 
-    const excelData = [];
+    const workbook = new ExcelJS.Workbook();
 
-    // العناوين
-    excelData.push([
+    const worksheet = workbook.addWorksheet("التلاميذ");
+
+    // اتجاه الورقة من اليمين إلى اليسار
+    worksheet.views = [
+        {
+            rightToLeft: true
+        }
+    ];
+
+    // عناوين الأعمدة
+    worksheet.addRow([
         "الرقم",
         "الاسم",
         "اللقب",
@@ -360,7 +369,7 @@ exportExcel.addEventListener("click", function () {
 
         const cells = row.querySelectorAll("td");
 
-        excelData.push([
+        worksheet.addRow([
             cells[0]?.textContent.trim() || "",
             cells[1]?.textContent.trim() || "",
             cells[2]?.textContent.trim() || "",
@@ -376,42 +385,76 @@ exportExcel.addEventListener("click", function () {
             cells[12]?.textContent.trim() || "",
             cells[13]?.textContent.trim() || ""
         ]);
+
     });
 
-    const worksheet = XLSX.utils.aoa_to_sheet(excelData);
+    // جعل جميع الخلايا بمحاذاة اليمين
+    worksheet.eachRow(function(row) {
+
+        row.eachCell(function(cell) {
+
+            cell.alignment = {
+                horizontal: "right",
+                vertical: "middle"
+            };
+
+        });
+
+    });
 
     // عرض الأعمدة
-    worksheet["!cols"] = [
-        { wch: 7 },
-        { wch: 18 },
-        { wch: 18 },
-        { wch: 18 },
-        { wch: 20 },
-        { wch: 10 },
-        { wch: 28 },
-        { wch: 30 },
-        { wch: 12 },
-        { wch: 22 },
-        { wch: 20 },
-        { wch: 35 },
-        { wch: 40 },
-        { wch: 40 }
+    worksheet.columns = [
+        { width: 8 },
+        { width: 20 },
+        { width: 20 },
+        { width: 18 },
+        { width: 22 },
+        { width: 12 },
+        { width: 28 },
+        { width: 30 },
+        { width: 12 },
+        { width: 25 },
+        { width: 20 },
+        { width: 35 },
+        { width: 40 },
+        { width: 40 }
     ];
 
-    const workbook = XLSX.utils.book_new();
+    // جعل العناوين واضحة
+    const header = worksheet.getRow(1);
 
-    XLSX.utils.book_append_sheet(
-        workbook,
-        worksheet,
-        "التلاميذ"
+    header.font = {
+        bold: true
+    };
+
+    header.alignment = {
+        horizontal: "right",
+        vertical: "middle"
+    };
+
+    // إنشاء ملف Excel
+    const buffer = await workbook.xlsx.writeBuffer();
+
+    const blob = new Blob(
+        [buffer],
+        {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        }
     );
 
-    XLSX.writeFile(
-        workbook,
-        "التلاميذ.xlsx"
-    );
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+
+    link.download = "التلاميذ.xlsx";
+
+    link.click();
+
+    URL.revokeObjectURL(link.href);
 
 });
+
+    
 // البحث بالاسم واللقب
 searchStudent.addEventListener("input", applyFilters);
 
@@ -455,8 +498,6 @@ async function editStudent(id) {
         .select("*")
         .eq("id", id)
         .single();
-
-    if (error) {
         alert("تعذر تحميل بيانات التلميذ ❌");
         console.error(error);
         return;
