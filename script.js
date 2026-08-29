@@ -319,7 +319,7 @@ if (logoutBtn) {
 // تصدير excel
 const exportExcel = document.getElementById("exportExcel");
 
-exportExcel.addEventListener("click", async function () {
+exportExcel.addEventListener("click", function () {
 
     const tableBody = document.getElementById("studentsTable");
 
@@ -335,19 +335,9 @@ exportExcel.addEventListener("click", async function () {
         return;
     }
 
-    const workbook = new ExcelJS.Workbook();
+    const excelData = [];
 
-    const worksheet = workbook.addWorksheet("التلاميذ");
-
-    // اتجاه ورقة Excel من اليمين إلى اليسار
-    worksheet.views = [
-        {
-            rightToLeft: true
-        }
-    ];
-
-    // العناوين
-    worksheet.addRow([
+    excelData.push([
         "الرقم",
         "الاسم",
         "اللقب",
@@ -364,12 +354,11 @@ exportExcel.addEventListener("click", async function () {
         "ملاحظات"
     ]);
 
-    // إضافة التلاميذ
     rows.forEach(function(row) {
 
         const cells = row.querySelectorAll("td");
 
-        worksheet.addRow([
+        excelData.push([
             cells[0]?.textContent.trim() || "",
             cells[1]?.textContent.trim() || "",
             cells[2]?.textContent.trim() || "",
@@ -388,77 +377,39 @@ exportExcel.addEventListener("click", async function () {
 
     });
 
-    // تنسيق جميع الخلايا
-    worksheet.eachRow(function(row) {
+    const worksheet = XLSX.utils.aoa_to_sheet(excelData);
 
-        row.eachCell(function(cell) {
-
-            cell.alignment = {
-                horizontal: "right",
-                vertical: "middle"
-            };
-
-        });
-
-    });
-
-    // عرض الأعمدة
-    worksheet.columns = [
-        { width: 8 },
-        { width: 20 },
-        { width: 20 },
-        { width: 18 },
-        { width: 22 },
-        { width: 12 },
-        { width: 28 },
-        { width: 30 },
-        { width: 12 },
-        { width: 25 },
-        { width: 20 },
-        { width: 35 },
-        { width: 40 },
-        { width: 40 }
+    worksheet["!cols"] = [
+        { wch: 7 },
+        { wch: 18 },
+        { wch: 18 },
+        { wch: 18 },
+        { wch: 20 },
+        { wch: 10 },
+        { wch: 28 },
+        { wch: 30 },
+        { wch: 12 },
+        { wch: 22 },
+        { wch: 20 },
+        { wch: 35 },
+        { wch: 40 },
+        { wch: 40 }
     ];
 
-    // تنسيق العناوين
-    const header = worksheet.getRow(1);
+    const workbook = XLSX.utils.book_new();
 
-    header.font = {
-        bold: true
-    };
-
-    header.alignment = {
-        horizontal: "right",
-        vertical: "middle"
-    };
-
-    // إنشاء الملف
-    const buffer = await workbook.xlsx.writeBuffer();
-
-    const blob = new Blob(
-        [buffer],
-        {
-            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        }
+    XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        "التلاميذ"
     );
 
-    const link = document.createElement("a");
-
-    link.href = URL.createObjectURL(blob);
-
-    link.download = "التلاميذ.xlsx";
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
-
-    URL.revokeObjectURL(link.href);
+    XLSX.writeFile(
+        workbook,
+        "التلاميذ.xlsx"
+    );
 
 });
-
-    
 // البحث بالاسم واللقب
 searchStudent.addEventListener("input", applyFilters);
 
