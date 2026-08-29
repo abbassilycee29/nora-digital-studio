@@ -453,6 +453,8 @@ async function editStudent(id) {
         .select("*")
         .eq("id", id)
         .single();
+
+    if (error) {
         alert("تعذر تحميل بيانات التلميذ ❌");
         console.error(error);
         return;
@@ -469,9 +471,11 @@ async function editStudent(id) {
     document.getElementById("className").value = data.class_name || "";
 
     document.getElementById("parentName").value = data.parent_name || "";
-  document.getElementById("parentPhone").value = data.parent_phone ?? data.parentPhone ?? "";
-document.getElementById("address").value = data.address ?? "";
-document.getElementById("email").value = data.email ?? "";
+    document.getElementById("parentPhone").value =
+        data.parent_phone ?? data.parentPhone ?? "";
+
+    document.getElementById("address").value = data.address ?? "";
+    document.getElementById("email").value = data.email ?? "";
     document.getElementById("notes").value = data.notes || "";
 
     window.editingStudentId = id;
@@ -482,3 +486,4 @@ document.getElementById("email").value = data.email ?? "";
         top: 0,
         behavior: "smooth"
     });
+}
