@@ -531,4 +531,3 @@ document.getElementById("email").value = data.email ?? "";
         top: 0,
         behavior: "smooth"
     });
-}
