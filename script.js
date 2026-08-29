@@ -317,8 +317,10 @@ if (logoutBtn) {
 
 
 // تصدير excel
-{ const exportExcel = document.getElementById("exportExcel");
+const exportExcel = document.getElementById("exportExcel");
+
 exportExcel.addEventListener("click", async function () {
+
     const tableBody = document.getElementById("studentsTable");
     const rows = tableBody.querySelectorAll("tr");
 
