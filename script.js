@@ -317,7 +317,7 @@ if (logoutBtn) {
 
 
 // تصدير excel
- const exportExcel = document.getElementById("exportExcel");
+const exportExcel = document.getElementById("exportExcel");
 
 exportExcel.addEventListener("click", async function () {
 
@@ -339,14 +339,14 @@ exportExcel.addEventListener("click", async function () {
 
     const worksheet = workbook.addWorksheet("التلاميذ");
 
-    // اتجاه الورقة من اليمين إلى اليسار
+    // اتجاه ورقة Excel من اليمين إلى اليسار
     worksheet.views = [
         {
             rightToLeft: true
         }
     ];
 
-    // عناوين الأعمدة
+    // العناوين
     worksheet.addRow([
         "الرقم",
         "الاسم",
@@ -364,7 +364,7 @@ exportExcel.addEventListener("click", async function () {
         "ملاحظات"
     ]);
 
-    // بيانات التلاميذ
+    // إضافة التلاميذ
     rows.forEach(function(row) {
 
         const cells = row.querySelectorAll("td");
@@ -388,7 +388,7 @@ exportExcel.addEventListener("click", async function () {
 
     });
 
-    // جعل جميع الخلايا بمحاذاة اليمين
+    // تنسيق جميع الخلايا
     worksheet.eachRow(function(row) {
 
         row.eachCell(function(cell) {
@@ -420,7 +420,7 @@ exportExcel.addEventListener("click", async function () {
         { width: 40 }
     ];
 
-    // جعل العناوين واضحة
+    // تنسيق العناوين
     const header = worksheet.getRow(1);
 
     header.font = {
@@ -432,7 +432,7 @@ exportExcel.addEventListener("click", async function () {
         vertical: "middle"
     };
 
-    // إنشاء ملف Excel
+    // إنشاء الملف
     const buffer = await workbook.xlsx.writeBuffer();
 
     const blob = new Blob(
@@ -448,7 +448,11 @@ exportExcel.addEventListener("click", async function () {
 
     link.download = "التلاميذ.xlsx";
 
+    document.body.appendChild(link);
+
     link.click();
+
+    document.body.removeChild(link);
 
     URL.revokeObjectURL(link.href);
 
