@@ -207,16 +207,18 @@ async function loadPendingStudents() {
         return;
     }
 
+    const teacher_id = session.user.id;
+
     const { data, error } = await supabaseClient
         .from("teacher student")
         .select("*")
         .eq("status", "pending")
-        .is("teacher_id", null)
+        .eq("teacher_id", teacher_id)
         .order("created_at", { ascending: false });
 
     if (error) {
         console.error(error);
-        alert("تعذر تحميل طلبات التسجيل");
+        alert("تعذر تحميل طلبات التسجيل:\n" + error.message);
         return;
     }
 
