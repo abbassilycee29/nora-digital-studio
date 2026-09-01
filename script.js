@@ -410,6 +410,67 @@ exportExcel.addEventListener("click", function () {
     );
 
 });
+// البحث والفلترة
+const searchStudent = document.getElementById("searchStudent");
+const filterYear = document.getElementById("filterYear");
+const filterBranch = document.getElementById("filterBranch");
+const filterClass = document.getElementById("filterClass");
+
+function applyFilters() {
+
+    const search = searchStudent.value.trim().toLowerCase();
+    const selectedYear = filterYear.value;
+    const selectedBranch = filterBranch.value;
+    const selectedClass = filterClass.value;
+
+    const rows = document.querySelectorAll("#studentsTable tr");
+
+    rows.forEach(function(row) {
+
+        const lastName =
+            row.cells[1]?.textContent.toLowerCase() || "";
+
+        const firstName =
+            row.cells[2]?.textContent.toLowerCase() || "";
+
+        const year =
+            row.cells[6]?.textContent.trim() || "";
+
+        const branch =
+            row.cells[7]?.textContent.trim() || "";
+
+        const className =
+            row.cells[8]?.textContent.trim() || "";
+
+        const matchSearch =
+            lastName.includes(search) ||
+            firstName.includes(search);
+
+        const matchYear =
+            selectedYear === "" ||
+            year === selectedYear;
+
+        const matchBranch =
+            selectedBranch === "" ||
+            branch === selectedBranch;
+
+        const matchClass =
+            selectedClass === "" ||
+            className === selectedClass;
+
+        if (
+            matchSearch &&
+            matchYear &&
+            matchBranch &&
+            matchClass
+        ) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+
+    });
+}
 // البحث بالاسم واللقب
 searchStudent.addEventListener("input", applyFilters);
 
