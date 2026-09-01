@@ -185,7 +185,7 @@
 
                     <button
                         type="button"
-                        onclick="window.location.href='student.html'">
+                        onclick="goToStudent()">
 
                         تسجيل التلميذ
 
@@ -239,8 +239,21 @@
             </strong>
         </p>
 
+  
     </footer>
+<script>
+function goToStudent() {
+    const teacher = new URLSearchParams(window.location.search).get("teacher");
 
+    if (!teacher) {
+        alert("رابط الأستاذ غير صحيح ❌");
+        return;
+    }
+
+    window.location.href =
+        "student.html?teacher=" + encodeURIComponent(teacher);
+}
+</script>
 </body>
 
 </html>
