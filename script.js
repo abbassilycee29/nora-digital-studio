@@ -158,7 +158,11 @@ alert("عدد التلاميذ: " + data.length);
     "\nالحالة: " +
     (data[0]?.status || "لا يوجد")
 );
-
+alert(
+    data.map(function(student) {
+        return student.first_name + " - " + student.status;
+    }).join("\n")
+);
     data.forEach(function(student, index) {
 
         const row = document.createElement("tr");
