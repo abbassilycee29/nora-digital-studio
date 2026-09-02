@@ -151,7 +151,13 @@ alert("عدد التلاميذ: " + data.length);
     }
 
     tableBody.innerHTML = "";
-  alert("عدد طلبات القبول التي وصلت: " + data.length);
+  alert(
+    "عدد الطلبات: " + data.length +
+    "\nأول طلب: " +
+    (data[0]?.first_name || "لا يوجد") +
+    "\nالحالة: " +
+    (data[0]?.status || "لا يوجد")
+);
 
     data.forEach(function(student, index) {
 
