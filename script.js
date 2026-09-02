@@ -83,6 +83,7 @@ if (!session) {
 }
 
 const teacher_id = session.user.id;
+  console.log("Teacher ID:", teacher_id);
 
 const student = {
     teacher_id: teacher_id,
@@ -150,6 +151,7 @@ alert("عدد التلاميذ: " + data.length);
     }
 
     tableBody.innerHTML = "";
+  alert("عدد طلبات القبول التي وصلت: " + data.length);
 
     data.forEach(function(student, index) {
 
@@ -215,6 +217,8 @@ async function loadPendingStudents() {
         .eq("status", "pending")
         .eq("teacher_id", teacher_id)
         .order("created_at", { ascending: false });
+  console.log("Pending requests:", data);
+console.log("Error:", error);
 
     if (error) {
         console.error(error);
