@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>تسجيل الأستاذ</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+
+        <section class="form-box">
+
+            <h2>👩‍🏫 تسجيل أستاذ جديد</h2>
+
+            <p>
+                أنشئ حسابك للحصول على رابط تسجيل التلاميذ الخاص بك
+            </p>
+
+            <form id="registerForm">
+
+                <div class="input-group">
+                    <label>اسم الأستاذ</label>
+                    <input
+                        type="text"
+                        id="teacherName"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>البريد الإلكتروني</label>
+                    <input
+                        type="email"
+                        id="email"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>كلمة المرور</label>
+                    <input
+                        type="password"
+                        id="password"
+                        required
+                    >
+                </div>
+
+                <button type="submit">
+                    📝 إنشاء الحساب
+                </button>
+
+
+            </form>
+
+            <br>
+          <button
+    type="button"
+    onclick="window.location.href='login.html'"
+>
+    🔐 لدي حساب بالفعل
+</button>
+
+<br><br>
+
+<button
+    type="button"
+    onclick="getTeacherLink()"
+>
+    🔗 الحصول على رابط التلاميذ
+</button>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="register-teacher.js"></script>
+
+</body>
+
+</html>

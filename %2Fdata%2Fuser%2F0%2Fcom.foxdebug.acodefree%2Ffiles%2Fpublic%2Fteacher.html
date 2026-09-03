@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>منصة الأستاذ</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- رأس الصفحة -->
+    <header>
+
+        <div class="logo">
+            🎓
+        </div>
+
+        <div class="site-title">
+            <h1>منصة الأستاذ</h1>
+
+          
+            <p>الأستاذة:عباسي أم الجيلالي</p>
+
+            <p>
+                مادة الإعلام الآلي -
+    المستوى الثانوي
+            </p>
+          
+
+        </div>
+    </header>
+<button id="logoutBtn" type="button">
+    🚪 تسجيل الخروج
+</button>
+  <button id="teacherLinkBtn" type="button">
+    🔗 رابط تسجيل التلاميذ
+</button>
+
+<p id="teacherLinkMessage"></p>
+
+    <!-- المحتوى -->
+    <main>
+
+
+        <!-- استمارة التلميذ -->
+        <section class="form-box">
+
+            <h2>📝 تسجيل معلومات التلميذ</h2>
+
+            <p class="description">
+                يرجى من التلميذ إدخال معلوماته الشخصية بدقة.
+            </p>
+
+
+            <form id="studentForm">
+
+
+                <!-- الاسم واللقب -->
+                <div class="form-row">
+
+                    <div class="input-group">
+
+                        <label for="firstName">
+                            اللقب *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="firstName"
+                            placeholder="أدخل اللقب"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="lastName">
+                     الاسم *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            placeholder="أدخل الاسم"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- تاريخ ومكان الميلاد -->
+                <div class="form-row">
+
+                    <div class="input-group">
+
+                        <label for="birthDate">
+                            تاريخ الميلاد *
+                        </label>
+
+                        <input
+                            type="date"
+                            id="birthDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="birthPlace">
+                            مكان الميلاد
+                        </label>
+
+                        <input
+                            type="text"
+                            id="birthPlace"
+                            placeholder="أدخل مكان الميلاد"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- الجنس والقسم -->
+
+                    <div class="input-group">
+
+                        <label for="gender">
+                            الجنس *
+                        </label>
+
+                        <select id="gender" required>
+
+                            <option value="">
+                       اختر
+                            </option>
+
+                            <option value="ذكر">
+                                ذكر
+                            </option>
+
+                            <option value="أنثى">
+                                أنثى
+                            </option>
+
+                        </select>
+
+                    </div>
+<div class="form-row school-info-row">
+
+    <!-- السنة الدراسية -->
+    <div class="input-group">
+
+        <label for="schoolYear">
+            السنة الدراسية *
+        </label>
+
+        <select id="schoolYear" required>
+            <option value="">اختر السنة</option>
+            <option value="السنة الأولى ثانوي"> الأولى ثانوي</option>
+            <option value="السنة الثانية ثانوي">الثانية ثانوي</option>
+            <option value="السنة الثالثة ثانوي">الثالثة ثانوي</option>
+        </select>
+
+    </div>
+
+
+    <!-- الشعبة -->
+    <div class="input-group">
+
+        <label for="branch">
+            الشعبة *
+        </label>
+
+        <select id="branch" required>
+            <option value="">اختر الشعبة</option>
+            <option value="جذع مشترك علوم وتكنولوجيا">جذع مشترك علوم وتكنولوجيا</option>
+            <option value="جذع مشترك آداب">جذع مشترك آداب</option>
+            <option value="علوم تجريبية">علوم تجريبية</option>
+            <option value="رياضيات">رياضيات</option>
+            <option value="تقني رياضي">تقني رياضي</option>
+            <option value="تسيير واقتصاد">تسيير واقتصاد</option>
+            <option value="آداب وفلسفة">آداب وفلسفة</option>
+            <option value="لغات أجنبية">لغات أجنبية</option>
+            <option value="فنون">فنون</option>
+        </select>
+
+    </div>
+
+
+    <!-- القسم -->
+    <div class="input-group">
+
+        <label for="className">
+            القسم *
+        </label>
+
+        <select id="className" required>
+            <option value="">اختر القسم</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+
+    </div>
+
+</div>
+
+            
+
+                      <!-- معلومات الولي -->
+<div class="form-row">
+
+    <div class="input-group">
+
+        <label for="parentName">
+            اسم الولي *
+        </label>
+
+        <input
+            type="text"
+            id="parentName"
+            placeholder="أدخل اسم الولي"
+            required
+        >
+
+    </div>
+
+    <div class="input-group">
+
+        <label for="parentPhone">
+            هاتف ولي الأمر *
+        </label>
+
+        <input
+            type="tel"
+            id="parentPhone"
+            placeholder="07XXXXXXXX"
+            required
+        >
+
+    </div>
+
+</div>
+
+
+                <!-- العنوان -->
+                <div class="input-group full">
+
+                    <label for="address">
+                        العنوان
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        placeholder="أدخل عنوان التلميذ"
+                    >
+
+                </div>
+
+
+                <!-- البريد -->
+                <div class="input-group full">
+
+                    <label for="email">
+                        البريد الإلكتروني
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@email.com"
+                    >
+
+                </div>
+
+
+                <!-- ملاحظات -->
+                <div class="input-group full">
+
+                    <label for="notes">
+                        ملاحظات
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        placeholder="ملاحظات إضافية"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- زر الإرسال -->
+                <button type="submit">
+
+                    📤 إرسال المعلومات
+
+                </button>
+
+
+            </form>
+
+
+            <p class="privacy">
+
+                🔒 معلومات التلميذ سرية وتظهر للأستاذ فقط.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- جدول التلاميذ -->
+        <section class="students-box">
+
+            <h2>👥 التلاميذ المسجلون</h2>
+
+            <p class="description">
+                التلاميذ الذين قاموا بتسجيل معلوماتهم.
+            </p>
+
+
+            <!-- الإحصائيات -->
+            <div class="stats">
+
+                <div>
+
+                    <strong id="studentCount">
+                        0
+                    </strong>
+
+                    <span>
+                        إجمالي التلاميذ
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="malecount">
+                        0
+                    </strong>
+
+                    <span>
+                        ذكور
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="femalecount">
+                        0
+                    </strong>
+
+                    <span>
+                        إناث
+                    </span>
+
+                </div>
+
+            </div>
+          <!-- طلبات تسجيل التلاميذ -->
+<section class="pending-box">
+
+    <h2>🆕 طلبات تسجيل جديدة</h2>
+
+    <p class="description">
+        التلاميذ الذين سجلوا أنفسهم وينتظرون قبول الأستاذ.
+    </p>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>الرقم</th>
+                    <th>الاسم</th>
+                    <th>اللقب</th>
+                    <th>السنة الدراسية</th>
+                    <th>الشعبة</th>
+                    <th>القسم</th>
+                    <th>إجراء</th>
+                </tr>
+            </thead>
+
+            <tbody id="pendingStudentsTable">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<button type="button" id="exportExcel">
+    📥 تصدير إلى Excel
+</button>
+    
+
+    <input
+        type="text"
+        id="searchStudent"
+        placeholder="🔎ابحث عن التلميذ باللقب أو الاسم ">
+      
+    <div class="filter-row">
+
+    <select id="filterYear">
+        <option value="">البحث بالسنة</option>
+        <option value="السنة الأولى ثانوي">السنة الأولى ثانوي</option>
+        <option value="السنة الثانية ثانوي">السنة الثانية ثانوي</option>
+        <option value="السنة الثالثة ثانوي">السنة الثالثة ثانوي</option>
+    </select>
+
+    <select id="filterBranch">
+        <option value="">البحث بالشعبة</option>
+        <option value="جذع مشترك علوم وتكنولوجيا">جذع مشترك علوم وتكنولوجيا</option>
+        <option value="جذع مشترك آداب">جذع مشترك آداب</option>
+        <option value="علوم تجريبية">علوم تجريبية</option>
+        <option value="رياضيات">رياضيات</option>
+        <option value="تقني رياضي">تقني رياضي</option>
+        <option value="تسيير واقتصاد">تسيير واقتصاد</option>
+        <option value="آداب وفلسفة">آداب وفلسفة</option>
+        <option value="لغات أجنبية">لغات أجنبية</option>
+        <option value="فنون">فنون</option>
+    </select>
+
+    <select id="filterClass">
+        <option value="">البحث بالقسم</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+
+    </div>
+
+<br><br>
+            <!-- الجدول -->
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                الرقم
+                            </th>
+
+                            <th>
+                                الاسم
+                            </th><th>اللقب </th>
+
+                            <th>
+                                تاريخ الميلاد
+                            </th><th> مكان الميلاد</th>
+
+                            <th>
+                                الجنس
+                            </th>
+                           <th>السنة الدراسية</th>
+                            <th>الشعبة</th>
+                             <th>   القسم</th>
+                            <th> اسم الولي</th>
+
+                            <th>
+                                هاتف ولي الأمر
+                            </th><th> العنوان </th>
+                          <th> البريد الالكتروني </th>
+                          <th> ملاحظات</th>
+                          <th>إجراءات</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentsTable">
+
+                        <!-- ستظهر التلاميذ هنا -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- أسفل الصفحة -->
+    <footer>
+
+        منصة الأستاذ © 2026
+
+    </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="script.js?v=999"></script>
+
+</body>
+
+</html>
