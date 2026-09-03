@@ -22,6 +22,7 @@ form.addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
+
     const teacherName =
         document.getElementById("teacherName").value.trim();
 
@@ -32,20 +33,27 @@ form.addEventListener("submit", async function(event) {
         document.getElementById("password").value;
 
 
-    message.textContent = "⏳ جاري إنشاء الحساب...";
+    message.textContent =
+        "⏳ جاري إنشاء الحساب...";
+
     message.style.color = "blue";
 
 
     const { data, error } =
         await supabaseClient.auth.signUp({
+
             email: email,
+
             password: password,
 
             options: {
+
                 data: {
                     teacher_name: teacherName
                 }
+
             }
+
         });
 
 
@@ -59,6 +67,7 @@ form.addEventListener("submit", async function(event) {
         message.style.color = "red";
 
         return;
+
     }
 
 
@@ -70,10 +79,12 @@ form.addEventListener("submit", async function(event) {
         message.style.color = "red";
 
         return;
+
     }
 
 
-    const teacherId = data.user.id;
+    const teacherId =
+        data.user.id;
 
 
     const teacherLink =
@@ -87,7 +98,10 @@ form.addEventListener("submit", async function(event) {
 
 
     message.innerHTML = `
-        <p>✅ تم إنشاء حسابك بنجاح</p>
+
+        <p>
+            ✅ تم إنشاء حساب الأستاذ بنجاح
+        </p>
 
         <p>
             🔗 رابط تسجيل التلاميذ الخاص بك:
@@ -103,23 +117,33 @@ form.addEventListener("submit", async function(event) {
 
         <br><br>
 
-        <button type="button" id="copyLink">
+        <button
+            type="button"
+            id="copyLink"
+        >
             📋 نسخ الرابط
         </button>
+
     `;
 
 
     document
         .getElementById("copyLink")
-        .addEventListener("click", async function() {
+        .addEventListener(
+            "click",
+            async function() {
 
-            const link =
-                document.getElementById("teacherLink").value;
+                const link =
+                    document
+                        .getElementById("teacherLink")
+                        .value;
 
-            await navigator.clipboard.writeText(link);
+                await navigator.clipboard
+                    .writeText(link);
 
-            alert("تم نسخ الرابط ✅");
+                alert("تم نسخ الرابط ✅");
 
-        });
+            }
+        );
 
 });
