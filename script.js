@@ -563,4 +563,60 @@ async function editStudent(id) {
         top: 0,
         behavior: "smooth"
     });
+  async function showTeacherLink() {
+
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if (!session) {
+
+        alert("يجب تسجيل الدخول أولًا.");
+
+        return;
+    }
+
+    const teacherId =
+        session.user.id;
+
+    const teacherLink =
+        window.location.origin +
+        window.location.pathname.replace(
+            "teacher.html",
+            ""
+        ) +
+        "?teacher=" +
+        encodeURIComponent(teacherId);
+
+    const message =
+        document.getElementById("teacherLinkMessage");
+
+    message.innerHTML = `
+        <p>🔗 رابط تسجيل التلاميذ الخاص بك:</p>
+
+        <input
+            type="text"
+            value="${teacherLink}"
+            readonly
+            style="width:100%;"
+        >
+
+        <br><br>
+
+        <button
+            type="button"
+            onclick="navigator.clipboard.writeText('${teacherLink}')"
+        >
+            📋 نسخ الرابط
+        </button>
+    `;
+}
+
+
+document
+    .getElementById("teacherLinkBtn")
+    .addEventListener(
+        "click",
+        showTeacherLink
+    );
 }
