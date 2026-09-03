@@ -147,3 +147,58 @@ form.addEventListener("submit", async function(event) {
         );
 
 });
+async function getTeacherLink() {
+
+    const { data: { session } } =
+        await supabaseClient.auth.getSession();
+
+    if (!session) {
+
+        alert(
+            "يجب تسجيل الدخول أولًا بحساب الأستاذ."
+        );
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
+
+    const teacherId =
+        session.user.id;
+
+
+    const teacherLink =
+        window.location.origin +
+        window.location.pathname.replace(
+            "register-teacher.html",
+            ""
+        ) +
+        "?teacher=" +
+        encodeURIComponent(teacherId);
+
+
+    message.innerHTML = `
+
+        <p>
+            🔗 رابط تسجيل التلاميذ الخاص بك:
+        </p>
+
+        <input
+            type="text"
+            value="${teacherLink}"
+            readonly
+            style="width:100%;"
+        >
+
+        <br><br>
+
+        <button
+            type="button"
+            onclick="navigator.clipboard.writeText('${teacherLink}')"
+        >
+            📋 نسخ الرابط
+        </button>
+
+    `;
+}
