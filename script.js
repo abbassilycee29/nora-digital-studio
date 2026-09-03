@@ -141,7 +141,6 @@ if (error) {
     return;
 }
 
-alert("عدد التلاميذ: " + data.length);
 
     const tableBody = document.querySelector("#studentsTable");
 
@@ -151,18 +150,6 @@ alert("عدد التلاميذ: " + data.length);
     }
 
     tableBody.innerHTML = "";
-  alert(
-    "عدد الطلبات: " + data.length +
-    "\nأول طلب: " +
-    (data[0]?.first_name || "لا يوجد") +
-    "\nالحالة: " +
-    (data[0]?.status || "لا يوجد")
-);
-alert(
-    data.map(function(student) {
-        return student.first_name + " - " + student.status;
-    }).join("\n")
-);
     data.forEach(function(student, index) {
 
         const row = document.createElement("tr");
